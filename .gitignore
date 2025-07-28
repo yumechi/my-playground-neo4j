@@ -156,9 +156,9 @@ cython_debug/
 #logs/
 .idea/
 
-# uv specific
+# uv specific  
 .uv/
-uv.lock
+# uv.lock - committing for dependency management
 
 # mise
 .mise.toml.bak
