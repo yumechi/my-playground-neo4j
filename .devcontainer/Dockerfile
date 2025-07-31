@@ -1,14 +1,6 @@
-FROM mcr.microsoft.com/devcontainers/python:3.11
+FROM mcr.microsoft.com/devcontainers/python:3.12
 
-# Install mise for package management
-RUN curl https://mise.run | sh
-ENV PATH="/root/.local/bin:$PATH"
-
-# Install uv via mise
-RUN mise install uv@latest
-RUN mise use -g uv@latest
-
-# Install additional tools
+# Install additional tools as root first
 RUN apt-get update && apt-get install -y \
     git \
     curl \
@@ -24,14 +16,22 @@ RUN apt-get update && apt-get install -y \
     podman \
     && rm -rf /var/lib/apt/lists/*
 
+# Switch to vscode user
+USER vscode
+
+# Install mise for vscode user
+RUN curl https://mise.run | sh
+ENV PATH="/home/vscode/.local/bin:$PATH"
+
+# Install uv via mise
+RUN /home/vscode/.local/bin/mise install uv@latest
+RUN /home/vscode/.local/bin/mise use -g uv@latest
+
 # Set up workspace
 WORKDIR /workspace
 
-# Copy project files
-COPY . .
+# Copy project files and set ownership
+COPY --chown=vscode:vscode . .
 
 # Install Python dependencies
-RUN /root/.local/bin/uv sync
-
-# Ensure proper permissions
-RUN chown -R vscode:vscode /workspace
+RUN /home/vscode/.local/bin/mise exec -- uv sync
