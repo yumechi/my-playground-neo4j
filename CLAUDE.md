@@ -29,11 +29,38 @@ uv add neo4j
 
 ### Neo4j の起動
 
+#### 簡単な起動方法（推奨）
+
+```bash
+# Neo4j起動
+./scripts/start-neo4j.sh
+
+# Neo4j停止
+./scripts/stop-neo4j.sh
+```
+
+#### 環境別の起動方法
+
+**GitHub Codespaces:**
+- Docker-in-Dockerを使用
+- 自動的にDockerが選択される
+
+**ローカル開発:**
+- Podmanを使用
+- 手動でコンテナを起動する場合：
+
 ```bash
 podman run -d \
-  --name neo4j \
+  --name neo4j-playground \
   -p 7474:7474 -p 7687:7687 \
   -e NEO4J_AUTH=neo4j/password \
+  -e NEO4J_PLUGINS='["apoc"]' \
+  -e NEO4J_dbms_security_procedures_unrestricted=apoc.* \
+  -e NEO4J_dbms_security_procedures_allowlist=apoc.* \
+  -v neo4j_data:/data \
+  -v neo4j_logs:/logs \
+  -v neo4j_import:/var/lib/neo4j/import \
+  -v neo4j_plugins:/plugins \
   neo4j:latest
 ```
 

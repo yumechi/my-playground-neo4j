@@ -9,6 +9,9 @@
       "enableNonRootDocker": "true"
     }
   },
+  "containerEnv": {
+    "USE_DOCKER": "true"
+  },
   "customizations": {
     "vscode": {
       "extensions": [
@@ -35,7 +38,7 @@
         "python.sortImports.args": ["--profile", "black"],
         "editor.formatOnSave": true,
         "editor.codeActionsOnSave": {
-          "source.organizeImports": true
+          "source.organizeImports": "explicit"
         }
       }
     }
@@ -51,6 +54,6 @@
       "onAutoForward": "silent"
     }
   },
-  "postCreateCommand": "uv sync",
+  "postCreateCommand": "mise install uv@latest && mise use -g uv@latest && uv sync",
   "remoteUser": "vscode"
 }

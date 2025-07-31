@@ -11,7 +11,8 @@ RUN apt-get update && apt-get install -y \
     jq \
     && rm -rf /var/lib/apt/lists/*
 
-# Install podman for Neo4j container management
+# Install container tools (Docker will be provided by docker-in-docker feature)
+# podman is kept for local development compatibility
 RUN apt-get update && apt-get install -y \
     podman podman-compose \
     && rm -rf /var/lib/apt/lists/*
