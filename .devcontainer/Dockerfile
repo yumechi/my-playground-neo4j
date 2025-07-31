@@ -24,8 +24,8 @@ RUN curl https://mise.run | sh
 ENV PATH="/home/vscode/.local/bin:$PATH"
 
 # Install uv via mise
-RUN /home/vscode/.local/bin/mise install uv@latest
-RUN /home/vscode/.local/bin/mise use -g uv@latest
+# RUN /home/vscode/.local/bin/mise install uv@latest
+# RUN /home/vscode/.local/bin/mise use -g uv@latest
 
 # Set up workspace
 WORKDIR /workspace
