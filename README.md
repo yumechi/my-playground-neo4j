@@ -2,6 +2,8 @@
 
 Neo4jデータベースを使用した実験・学習用のプロジェクトです。
 
+**⚠️ 重要: このプロジェクトは学習・実験目的のみで作成されています。商用利用は想定していません。**
+
 ## 必要な環境
 
 - [mise](https://mise.jdx.dev/) - ツールバージョン管理
@@ -95,3 +97,14 @@ lsof -i :7687
 podman stop neo4j-playground
 podman rm neo4j-playground
 ```
+
+## ライセンス
+
+このプロジェクトはMITライセンスの下で公開されています。詳細は[LICENSE](LICENSE)ファイルを参照してください。
+
+### 使用しているソフトウェアのライセンスについて
+
+- **Neo4j Community Edition**: GPL v3ライセンス
+- **このプロジェクトのコード**: MITライセンス
+
+このプロジェクトは学習・実験目的で作成されており、Neo4j Community Editionをクライアントライブラリ経由で使用しています。Neo4jのライセンス要件については[Neo4j公式サイト](https://neo4j.com/licensing/)を参照してください。
