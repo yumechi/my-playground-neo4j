@@ -33,5 +33,6 @@ WORKDIR /workspace
 # Copy project files and set ownership
 COPY --chown=vscode:vscode . .
 
+# インストールは手動で行う
 # Install Python dependencies
-RUN /home/vscode/.local/bin/mise exec -- uv sync
+# RUN /home/vscode/.local/bin/mise exec -- uv sync
