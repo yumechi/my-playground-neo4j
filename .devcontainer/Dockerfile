@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install -y \
 
 # Install podman for Neo4j container management
 RUN apt-get update && apt-get install -y \
-    podman \
+    podman podman-compose \
     && rm -rf /var/lib/apt/lists/*
 
 # Switch to vscode user
